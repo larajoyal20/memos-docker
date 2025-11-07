@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: memos
+    env: docker
+    plan: free
+    autoDeploy: true
+    healthCheckPath: /
+    disk:
+      name: memos-data
+      mountPath: /var/opt/memos
+      sizeGB: 1
+    envVars:
+      - key: MEMOS_MODE
+        value: prod
+      - key: MEMOS_PORT
+        value: 5230
+      - key: DISABLE_SIGNUP
+        value: true
